@@ -2,6 +2,8 @@ part of dart_assert;
 
 ObjectAssert assertThisObject(Object o) => new ObjectAssert(o);
 
+failBecauseWasNotThrown(Type type) => throw new AssertionFailed("Expected $type to be thrown");
+
 /**
  * Base class for all assertions.
  * 
