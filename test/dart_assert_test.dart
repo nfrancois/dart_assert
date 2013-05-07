@@ -1,5 +1,7 @@
 library dart_assert_test;
 
+//Copyright (C) 2013 Nicolas François. All Rights Reserved.
+
 import 'package:unittest/unittest.dart';
 import 'package:dart_assert/dart_assert.dart';
 

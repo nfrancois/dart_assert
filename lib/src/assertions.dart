@@ -1,5 +1,7 @@
 part of dart_assert;
 
+//Copyright (C) 2013 Nicolas François. All Rights Reserved.
+
 /**
  * Provide a [ObjectAssert].
  */

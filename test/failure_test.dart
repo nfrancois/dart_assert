@@ -1,5 +1,7 @@
 part of dart_assert_test;
 
+//Copyright (C) 2013 Nicolas François. All Rights Reserved.
+
 class UnbelievableError {}
 
 run_failure_test(){
