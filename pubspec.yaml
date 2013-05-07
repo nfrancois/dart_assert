@@ -1,5 +1,5 @@
 name: dart_assert
-version: 0.0.2
+version: 0.0.2-dev
 author: Nicolas Francois  <nicolas.franc@gmail.com>
 description: Dart Assert provides a rich and intuitive set of strongly typed assertions to use for unit testing. Inspired by AssertJ
 homepage: http://github.com/nfrancois/dart_assert
