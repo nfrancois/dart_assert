@@ -111,5 +111,46 @@ run_object_assert_test() =>
         expect(e.message, "Expecting:\n Dart\n to be same as:\nDart");
       }      
     });  
-    
+    test('isIn ok', () {
+      // Given
+      var dart = "Dart";
+      var dummyAssert = new DummyAssert(dart);
+      
+      // Then
+     dummyAssert.isIn(["Dart","Html5", "Css3"]);
+    });   
+    test('isIn ko', () {
+      // Given
+      var dart = "Dart";
+      var dummyAssert = new DummyAssert(dart);
+      
+      // Then
+      try {           
+        dummyAssert.isIn(["Html5", "Css3"]);
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\nto be in:\n[Html5, Css3]");
+      }      
+    });
+    test('isNotIn ok', () {
+      // Given
+      var dart = "Dart";
+      var dummyAssert = new DummyAssert(dart);
+      
+      // Then
+     dummyAssert.isNotIn(["Hhtml5", "Css3"]);
+    });   
+    test('isNotIn ko', () {
+      // Given
+      var dart = "Dart";
+      var dummyAssert = new DummyAssert(dart);
+      
+      // Then
+      try {           
+        dummyAssert.isNotIn(["Dart","Html5", "Css3"]);
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\nnot to be in:\n[Dart, Html5, Css3]");
+      }      
+    });     
   });

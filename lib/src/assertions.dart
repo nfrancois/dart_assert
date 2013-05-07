@@ -76,6 +76,24 @@ abstract class AbstractAssert<T> {
     }
   }  
   
+  /**
+   * Verifies that the actual value is present in the given array of values. 
+   */
+  isIn(Iterable<T> values) {
+    if(!values.contains(_actual)){
+      throw new AssertionFailed("Expecting:\n $_actual\nto be in:\n$values");
+    }
+  }
+
+  /**
+   * erifies that the actual value is not present in the given array of values. 
+   */  
+  isNotIn(Iterable<T> values) {
+    if(values.contains(_actual)){
+      throw new AssertionFailed("Expecting:\n $_actual\nnot to be in:\n$values");
+    }
+  }
+  
 }
 
 /**
