@@ -10,7 +10,7 @@ ObjectAssert assertThisObject(Object o) => new ObjectAssert(o);
 /**
  * Fail method when something is not throwned.
  */
-failBecauseWasNotThrown(Type type) => throw new AssertionFailed("Expected $type to be thrown");
+failBecauseWasNotThrown(Type type) => throw new AssertionFailed("\nExpected $type to be thrown");
 
 /**
  * Base class for all assertions.
@@ -27,7 +27,7 @@ abstract class AbstractAssert<T> {
    */
   isEqualTo(T other) {
     if(_actual != other){
-      throw new AssertionFailed("Expecting:\n $_actual\nto be equal to:\n $other\nbut was not.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\nto be equal to:\n $other\nbut was not.");
     }
   }  
  
@@ -36,7 +36,7 @@ abstract class AbstractAssert<T> {
    */  
   isNotEqualTo(T other) {
     if(_actual == other){
-      throw new AssertionFailed("Expecting:\n $_actual\nnot to be equal to:\n$other\n.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\nnot to be equal to:\n$other\n.");
     }
   }
 
@@ -45,7 +45,7 @@ abstract class AbstractAssert<T> {
    */
   isNull() {
     if(_actual != null){
-      throw new AssertionFailed("Expecting null but was:\n$_actual.");
+      throw new AssertionFailed("\nExpecting null but was:\n$_actual.");
     }
   }
 
@@ -54,7 +54,7 @@ abstract class AbstractAssert<T> {
    */
   isNotNull() {
     if(_actual == null){
-      throw new AssertionFailed("Expecting to be not null.");
+      throw new AssertionFailed("\nExpecting to be not null.");
     }
   }
 
@@ -63,7 +63,7 @@ abstract class AbstractAssert<T> {
    */
   isSameAs(T expected) {
     if(!identical(_actual, expected)){
-      throw new AssertionFailed("Expecting:\n $_actual\n to be same as:\n$expected\n but was not.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\n to be same as:\n$expected\n but was not.");
     }
   }
   
@@ -72,7 +72,7 @@ abstract class AbstractAssert<T> {
    */
   isNotSameAs(T expected) {
     if(identical(_actual, expected)){
-      throw new AssertionFailed("Expecting:\n $_actual\n to be same as:\n$expected.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\n to be same as:\n$expected.");
     }
   }  
   
@@ -81,7 +81,7 @@ abstract class AbstractAssert<T> {
    */
   isIn(Iterable<T> values) {
     if(!values.contains(_actual)){
-      throw new AssertionFailed("Expecting:\n $_actual\nto be in:\n$values.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\nto be in:\n$values.");
     }
   }
 
@@ -90,7 +90,7 @@ abstract class AbstractAssert<T> {
    */  
   isNotIn(Iterable<T> values) {
     if(values.contains(_actual)){
-      throw new AssertionFailed("Expecting:\n $_actual\nnot to be in:\n$values.");
+      throw new AssertionFailed("\nExpecting:\n $_actual\nnot to be in:\n$values.");
     }
   }
   
@@ -99,7 +99,7 @@ abstract class AbstractAssert<T> {
    */
   satisfies(bool condition(T value), {String description: "condition"}){
     if(!condition(_actual)){
-      throw new AssertionFailed("Expecting:\n Dart\nsatisfies $description.");      
+      throw new AssertionFailed("\nExpecting:\n Dart\nsatisfies $description.");      
     }
   }
   
@@ -108,7 +108,7 @@ abstract class AbstractAssert<T> {
    */
   doesNotSatisfies(bool condition(T value), {String description: "condition"}){
     if(condition(_actual)){
-      throw new AssertionFailed("Expecting:\n Dart\ndoes not satisfies $description.");      
+      throw new AssertionFailed("\nExpecting:\n Dart\ndoes not satisfies $description.");      
     }
   }  
   

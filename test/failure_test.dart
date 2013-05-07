@@ -11,7 +11,7 @@ run_failure_test(){
         failBecauseWasNotThrown(UnbelievableError);
         failWithoutAssertionFailed();
       } on AssertionFailed catch(e){
-        expect(e.message, "Expected UnbelievableError to be thrown");
+        expect(e.message, "\nExpected UnbelievableError to be thrown");
       }
     })
    );
