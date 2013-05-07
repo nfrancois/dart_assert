@@ -25,7 +25,7 @@ pub install
 import 'package:assert_dart/assert_dart.dart';
 
 
-assertThisObjec("Hello")..isNotNull()
+assertThisObject("Hello")..isNotNull()
                         ..isEqualTo("Hello");
 
 ```
