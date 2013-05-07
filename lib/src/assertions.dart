@@ -114,6 +114,8 @@ abstract class AbstractAssert<T> {
   
 }
 
+typedef bool Condition<T>(T value);
+
 /**
  * Throw when assertion fail.
  */
