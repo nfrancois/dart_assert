@@ -72,7 +72,7 @@ abstract class AbstractAssert<T> {
    */
   isNotSameAs(T expected) {
     if(identical(_actual, expected)){
-      throw new AssertionFailed("Expecting:\n $_actual\n to be same as:\n$expected");
+      throw new AssertionFailed("Expecting:\n $_actual\n to be same as:\n$expected.");
     }
   }  
   
@@ -81,18 +81,36 @@ abstract class AbstractAssert<T> {
    */
   isIn(Iterable<T> values) {
     if(!values.contains(_actual)){
-      throw new AssertionFailed("Expecting:\n $_actual\nto be in:\n$values");
+      throw new AssertionFailed("Expecting:\n $_actual\nto be in:\n$values.");
     }
   }
 
   /**
-   * erifies that the actual value is not present in the given array of values. 
+   * Verifies that the actual value is not present in the given array of values. 
    */  
   isNotIn(Iterable<T> values) {
     if(values.contains(_actual)){
-      throw new AssertionFailed("Expecting:\n $_actual\nnot to be in:\n$values");
+      throw new AssertionFailed("Expecting:\n $_actual\nnot to be in:\n$values.");
     }
   }
+  
+  /**
+   * Verifies that the actual valie satisfies a condition. 
+   */
+  satisfies(bool condition(T value), {String description: "condition"}){
+    if(!condition(_actual)){
+      throw new AssertionFailed("Expecting:\n Dart\nsatisfies $description.");      
+    }
+  }
+  
+  /**
+   * Verifies that the actual valie satisfies a condition. 
+   */
+  doesNotSatisfies(bool condition(T value), {String description: "condition"}){
+    if(condition(_actual)){
+      throw new AssertionFailed("Expecting:\n Dart\ndoes not satisfies $description.");      
+    }
+  }  
   
 }
 
@@ -105,7 +123,7 @@ class AssertionFailed {
 
   AssertionFailed(this._message);
   
-  get message => _message;
+  String get message => _message;
 
   String toString() => _message;  
   

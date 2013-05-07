@@ -10,7 +10,7 @@ class DummyAssert extends AbstractAssert<String> {
 }
 
 run_object_assert_test() =>
-  group('DummyAssert Test',(){
+  group('AbstractAssert ',(){
     test('isNotNul ok', () {
       // Given
       var dummyAssert = new DummyAssert("Dart");
@@ -108,7 +108,7 @@ run_object_assert_test() =>
         dummyAssert.isNotSameAs(dart);
         failWithoutAssertionFailed();
       } on AssertionFailed catch(e){
-        expect(e.message, "Expecting:\n Dart\n to be same as:\nDart");
+        expect(e.message, "Expecting:\n Dart\n to be same as:\nDart.");
       }      
     });  
     test('isIn ok', () {
@@ -129,7 +129,7 @@ run_object_assert_test() =>
         dummyAssert.isIn(["Html5", "Css3"]);
         failWithoutAssertionFailed();
       } on AssertionFailed catch(e){
-        expect(e.message, "Expecting:\n Dart\nto be in:\n[Html5, Css3]");
+        expect(e.message, "Expecting:\n Dart\nto be in:\n[Html5, Css3].");
       }      
     });
     test('isNotIn ok', () {
@@ -150,7 +150,71 @@ run_object_assert_test() =>
         dummyAssert.isNotIn(["Dart","Html5", "Css3"]);
         failWithoutAssertionFailed();
       } on AssertionFailed catch(e){
-        expect(e.message, "Expecting:\n Dart\nnot to be in:\n[Dart, Html5, Css3]");
+        expect(e.message, "Expecting:\n Dart\nnot to be in:\n[Dart, Html5, Css3].");
+      }      
+    });  
+    test('Satifies condition ok',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      dummyAssert.satisfies((String word) => word.startsWith("D"));
+    });
+    test('satifies condition ko',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      try {      
+        dummyAssert.satisfies((String word) => word.startsWith("d"));
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\nsatisfies condition.");
+      }      
+    }); 
+    test('satifies condition ko with description',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      try {      
+        dummyAssert.satisfies((String word) => word.startsWith("d"), description: "Start with 'd'");
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\nsatisfies Start with 'd'.");
+      }      
+    });  
+    
+    
+    test('doesNotSatifies condition ok',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      dummyAssert.doesNotSatisfies((String word) => word.startsWith("d"));
+    });
+    test('doesNotSatifies condition ko',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      try {      
+        dummyAssert.doesNotSatisfies((String word) => word.startsWith("D"));
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\ndoes not satisfies condition.");
+      }      
+    }); 
+    test('doesNotSatifies condition ko with description',(){
+      // Given
+      var dummyAssert = new DummyAssert("Dart");
+      
+      // Then
+      try {      
+        dummyAssert.doesNotSatisfies((String word) => word.startsWith("D"), description: "Start with 'D'");
+        failWithoutAssertionFailed();
+      } on AssertionFailed catch(e){
+        expect(e.message, "Expecting:\n Dart\ndoes not satisfies Start with 'D'.");
       }      
     });     
   });
