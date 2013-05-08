@@ -97,7 +97,7 @@ abstract class AbstractAssert<T> {
   /**
    * Verifies that the actual valie satisfies a condition. 
    */
-  satisfies(bool condition(T value), {String description: "condition"}){
+  satisfies(Condition condition, {String description: "condition"}){
     if(!condition(_actual)){
       throw new AssertionFailed("\nExpecting:\n Dart\nsatisfies $description.");      
     }
@@ -106,7 +106,7 @@ abstract class AbstractAssert<T> {
   /**
    * Verifies that the actual valie satisfies a condition. 
    */
-  doesNotSatisfies(bool condition(T value), {String description: "condition"}){
+  doesNotSatisfies(Condition condition, {String description: "condition"}){
     if(condition(_actual)){
       throw new AssertionFailed("\nExpecting:\n Dart\ndoes not satisfies $description.");      
     }
@@ -114,7 +114,7 @@ abstract class AbstractAssert<T> {
   
 }
 
-typedef bool Condition<T>(T value);
+typedef bool Condition(dynamic value);
 
 /**
  * Throw when assertion fail.
