@@ -6,14 +6,14 @@ run_equality_test() =>
     group('Equality Test', (){
       test('isEqualTo ok', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isEqualTo("Dart");
       });
       test('isEqualTo ko', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -22,24 +22,17 @@ run_equality_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\nto be equal to:\n dart\nbut was not.");
         }
-      });       
+      });        
       test('isNotEqualTo ok', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
-        
-        // Then
-        dummyAssert.isNotEqualTo("dart");
-      });          
-      test('isNotEqualTo ok', () {
-        // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotEqualTo("dart");
       });    
       test('isNotEqualTo ko', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -55,14 +48,14 @@ run_nullity_test() =>
     group('Nullity Test', (){
       test('isNull ok', () {
         // Given
-        var dummyAssert = new DummyAssert(null);
+        final dummyAssert = new DummyAssert(null);
         
         // Then
         dummyAssert.isNull();        
       });
       test('isNull ko', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -74,14 +67,14 @@ run_nullity_test() =>
       }); 
       test('isNotNull ok', () {
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotNull();
       });
       test('isNotNull ko', () {
         // Given
-        var dummyAssert = new DummyAssert(null);
+        final dummyAssert = new DummyAssert(null);
         
         // Then
         try {
@@ -97,16 +90,14 @@ run_contains_test() =>
     group('Contains Test ',(){
       test('isIn ok', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isIn(["Dart","Html5", "Css3"]);
       });   
       test('isIn ko', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {           
@@ -118,16 +109,14 @@ run_contains_test() =>
       });
       test('isNotIn ok', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotIn(["Hhtml5", "Css3"]);
       });   
       test('isNotIn ko', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {           
@@ -143,17 +132,17 @@ run_same_test() =>
     group('Same Test', () {
       test('isSameAs ok', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dart = "Dart";
+        final dummyAssert = new DummyAssert(dart);
         
         // Then
         dummyAssert.isSameAs(dart);
       });    
       test('isSameAs ko', () {
         // Given
-        var dart = "Dart";
-        var dart2 = new String.fromCharCodes("Dart".codeUnits);// equals but not are not same
-        var dummyAssert = new DummyAssert(dart);
+        final dart = "Dart";
+        final dart2 = new String.fromCharCodes("Dart".codeUnits);// equals but not are not same
+        final dummyAssert = new DummyAssert(dart);
         
         // Then
         expect(dart, dart2);
@@ -166,9 +155,9 @@ run_same_test() =>
       });   
       test('isNotSameAs ok', () {
         // Given
-        var dart = "Dart";
-        var dart2 = new String.fromCharCodes(dart.codeUnits);// equals but not are not same
-        var dummyAssert = new DummyAssert(dart);
+        final dart = "Dart";
+        final dart2 = new String.fromCharCodes(dart.codeUnits);// equals but not are not same
+        final dummyAssert = new DummyAssert(dart);
         
         // Then
         expect(dart, dart2);
@@ -176,8 +165,8 @@ run_same_test() =>
       });    
       test('isNotSameAs ko', () {
         // Given
-        var dart = "Dart";
-        var dummyAssert = new DummyAssert(dart);
+        final dart = "Dart";
+        final dummyAssert = new DummyAssert(dart);
         
         // Then
         try {           
@@ -193,14 +182,14 @@ run_conditions_test() =>
     group('Conditions Test', (){
       test('Satifies condition ok',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.satisfies((String word) => word.startsWith("D"));
       });
       test('satifies condition ko',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -212,7 +201,7 @@ run_conditions_test() =>
       }); 
       test('satifies condition ko with description',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -226,14 +215,14 @@ run_conditions_test() =>
       
       test('doesNotSatifies condition ok',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.doesNotSatisfies((String word) => word.startsWith("d"));
       });
       test('doesNotSatifies condition ko',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {      
@@ -245,7 +234,7 @@ run_conditions_test() =>
       }); 
       test('doesNotSatifies condition ko with description',(){
         // Given
-        var dummyAssert = new DummyAssert("Dart");
+        final dummyAssert = new DummyAssert("Dart");
         
         // Then
         try {
