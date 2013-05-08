@@ -25,7 +25,10 @@ pub install
 import 'package:assert_dart/assert_dart.dart';
 
 
-assertThisObject("Hello")..isNotNull()
-                        ..isEqualTo("Hello");
+assertThisObject("Dart")..isNotNull()
+                         ..isEqualTo("Dart")
+                         ..isNotEqualsTo("dart")
+                         ..satisfies((String word) => world.startsWith("D"))
+                         ..doesNotSatisfies((String word) => world.length == 5);
 
 ```
