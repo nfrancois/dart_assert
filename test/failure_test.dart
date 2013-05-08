@@ -5,7 +5,7 @@ part of dart_assert_test;
 class UnbelievableError {}
 
 run_failure_test(){
-  group('Error', () =>
+  group('Error Test', () =>
     test('failWhenException', (){
       try {
         failBecauseWasNotThrown(UnbelievableError);

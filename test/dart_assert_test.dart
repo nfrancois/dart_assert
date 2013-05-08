@@ -9,8 +9,19 @@ part 'abstract_assert_test.dart';
 part 'failure_test.dart';
 
 main(){
-  run_object_assert_test();
+  run_contains_test();
+  run_same_test();
+  run_equality_test();
+  run_nullity_test();
+  run_conditions_test();
   run_failure_test();
 }
 
 failWithoutAssertionFailed() => fail("AssertionFailed not throwed");
+
+// A very simple assert class
+class DummyAssert extends AbstractAssert<String> {
+  
+  DummyAssert(actual) : super(actual);
+  
+}
