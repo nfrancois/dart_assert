@@ -4,14 +4,14 @@ part of dart_assert_test;
 
 run_equality_test() =>
     group('Equality Test', (){
-      test('isEqualTo ok', () {
+      test('isEqualTo success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isEqualTo("Dart");
       });
-      test('isEqualTo ko', () {
+      test('isEqualTo success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -22,15 +22,27 @@ run_equality_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\nto be equal to:\n dart\nbut was not.");
         }
-      });        
-      test('isNotEqualTo ok', () {
+      });
+      test('isEqualTo fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isEqualTo(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nparameter is null");
+        }
+      });      
+      test('isNotEqualTo success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotEqualTo("dart");
       });    
-      test('isNotEqualTo ko', () {
+      test('isNotEqualTo fails', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -42,18 +54,30 @@ run_equality_test() =>
           expect(e.message, "\nExpecting:\n Dart\nnot to be equal to:\nDart\n.");
         }
       }); 
+      test('isNotEqualTo fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isNotEqualTo(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nparameter is null");
+        }
+      });       
     });
 
 run_nullity_test() =>
     group('Nullity Test', (){
-      test('isNull ok', () {
+      test('isNull success', () {
         // Given
         final dummyAssert = new DummyAssert(null);
         
         // Then
         dummyAssert.isNull();        
       });
-      test('isNull ko', () {
+      test('isNull fails', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -65,14 +89,14 @@ run_nullity_test() =>
           expect(e.message, "\nExpecting null but was:\nDart.");
         }
       }); 
-      test('isNotNull ok', () {
+      test('isNotNull success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotNull();
       });
-      test('isNotNull ko', () {
+      test('isNotNull fails', () {
         // Given
         final dummyAssert = new DummyAssert(null);
         
@@ -88,14 +112,14 @@ run_nullity_test() =>
 
 run_contains_test() =>
     group('Contains Test ',(){
-      test('isIn ok', () {
+      test('isIn success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isIn(["Dart","Html5", "Css3"]);
       });   
-      test('isIn ko', () {
+      test('isIn fails', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -107,14 +131,26 @@ run_contains_test() =>
           expect(e.message, "\nExpecting:\n Dart\nto be in:\n[Html5, Css3].");
         }      
       });
-      test('isNotIn ok', () {
+      test('isIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isIn(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nparameter is null");
+        }
+      });        
+      test('isNotIn success', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.isNotIn(["Hhtml5", "Css3"]);
       });   
-      test('isNotIn ko', () {
+      test('isNotIn fails', () {
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -125,12 +161,24 @@ run_contains_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\nnot to be in:\n[Dart, Html5, Css3].");
         }      
-      });  
+      }); 
+      test('isNotIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isNotIn(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nparameter is null");
+        }
+      });        
     });
 
 run_same_test() =>
     group('Same Test', () {
-      test('isSameAs ok', () {
+      test('isSameAs success', () {
         // Given
         final dart = "Dart";
         final dummyAssert = new DummyAssert(dart);
@@ -138,7 +186,7 @@ run_same_test() =>
         // Then
         dummyAssert.isSameAs(dart);
       });    
-      test('isSameAs ko', () {
+      test('isSameAs fails', () {
         // Given
         final dart = "Dart";
         final dart2 = new String.fromCharCodes("Dart".codeUnits);// equals but not are not same
@@ -152,8 +200,20 @@ run_same_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\n to be same as:\nDart\n but was not.");
         }      
-      });   
-      test('isNotSameAs ok', () {
+      });
+      test('isIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isSameAs(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nexpected is null");
+        }
+      });       
+      test('isNotSameAs success', () {
         // Given
         final dart = "Dart";
         final dart2 = new String.fromCharCodes(dart.codeUnits);// equals but not are not same
@@ -163,7 +223,7 @@ run_same_test() =>
         expect(dart, dart2);
         dummyAssert.isNotSameAs(dart2);
       });    
-      test('isNotSameAs ko', () {
+      test('isNotSameAs fails', () {
         // Given
         final dart = "Dart";
         final dummyAssert = new DummyAssert(dart);
@@ -175,19 +235,31 @@ run_same_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\n to be same as:\nDart.");
         }      
-      });        
+      });
+      test('isIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.isNotSameAs(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\nexpected is null");
+        }
+      });      
     });
 
 run_conditions_test() =>
     group('Conditions Test', (){
-      test('Satifies condition ok',(){
+      test('Satifies condition success',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.satisfies((String word) => word.startsWith("D"));
       });
-      test('satifies condition ko',(){
+      test('satifies condition fails',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -199,7 +271,7 @@ run_conditions_test() =>
           expect(e.message, "\nExpecting:\n Dart\nsatisfies condition.");
         }      
       }); 
-      test('satifies condition ko with description',(){
+      test('satifies condition fails with description',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -211,16 +283,26 @@ run_conditions_test() =>
           expect(e.message, "\nExpecting:\n Dart\nsatisfies Start with 'd'.");
         }      
       });  
-      
-      
-      test('doesNotSatifies condition ok',(){
+      test('isIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.satisfies(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\ncondition is null");
+        }
+      });      
+      test('doesNotSatifies condition success',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
         // Then
         dummyAssert.doesNotSatisfies((String word) => word.startsWith("d"));
       });
-      test('doesNotSatifies condition ko',(){
+      test('doesNotSatifies condition fails',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -232,7 +314,7 @@ run_conditions_test() =>
           expect(e.message, "\nExpecting:\n Dart\ndoes not satisfies condition.");
         }      
       }); 
-      test('doesNotSatifies condition ko with description',(){
+      test('doesNotSatifies condition fails with description',(){
         // Given
         final dummyAssert = new DummyAssert("Dart");
         
@@ -243,6 +325,18 @@ run_conditions_test() =>
         } on AssertionFailed catch(e){
           expect(e.message, "\nExpecting:\n Dart\ndoes not satisfies Start with 'D'.");
         }      
-      });  
+      });
+      test('isIn fails when param is null', () {
+        // Given
+        final dummyAssert = new DummyAssert("Dart");
+        
+        // Then
+        try {      
+          dummyAssert.doesNotSatisfies(null);
+          failWithoutAssertionFailed();
+        } on AssertionFailed catch(e){
+          expect(e.message, "\ncondition is null");
+        }
+      }); 
     });
     
